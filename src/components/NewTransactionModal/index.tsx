@@ -45,7 +45,10 @@ export const NewTransactionModal = ({isOpen,onRequestClose}:newTransactionsModal
 
                 <h2>Cadastrar Transação</h2>
 
-                <input placeholder='Titulo' />
+                <input 
+                placeholder='Titulo'
+                onChange={event => setTitle(event.target.value)}
+                />
                 <input type="number" placeholder='valor' />
 
                 <TransactionTypeContainer>
