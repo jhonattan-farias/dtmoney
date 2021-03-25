@@ -25,8 +25,10 @@ createServer({
       ]
     })
 
-    this.post('/transactions', () =>{
-      
+    this.post('/transactions', (schema,request):any =>{
+      const data = JSON.parse(request.requestBody)
+
+      Model
     })
 
   }
