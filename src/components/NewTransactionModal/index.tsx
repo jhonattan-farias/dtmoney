@@ -33,16 +33,16 @@ export const NewTransactionModal = ({isOpen,onRequestClose}:newTransactionsModal
         })
         const data ={
             title,
-            value,
+            amount : value,
             category,
             type
         }
 
         api.post('/transactions',data)
 
-      //  setTitle('')
-      //  setValue('')
-      //  setCategory('')
+       setTitle('')
+       setValue('')
+       setCategory('')
     }
 
     return(
@@ -60,7 +60,7 @@ export const NewTransactionModal = ({isOpen,onRequestClose}:newTransactionsModal
                 onClick={onRequestClose}
                 className="react-modal-close"
                  >
-                <img src={closeImg} alt="gechar modal"/>
+                <img src={closeImg} alt="fechar modal"/>
                 </button>
 
                 <h2>Cadastrar Transação</h2>

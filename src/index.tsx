@@ -8,27 +8,30 @@ createServer({
     transaction:Model,
   },
 
+  seeds(server) {
+    server.db.loadData({
+      transactions: [
+        {
+          id:1,
+          title:'venda de Super Model',
+          type:'deposit',
+          amount:150000,
+          category:'sell',  
+          createdAt:Date.now(),
+        }
+      ]
+    })
+  },
 
   routes() {
     this.namespace = 'api';
 
-    this.get('/transactions',() => {
-      return[
-        {
-          id:1,
-          title:'transaction 1',
-          amount:400,
-          type:'deposit',
-          category:'food',
-          createdAt:new Date(),  
-        }
-      ]
-    })
+    this.get('/transactions',() => this.schema.all('transaction') )
 
     this.post('/transactions', (schema,request):any =>{
       const data = JSON.parse(request.requestBody)
 
-      Model
+      return schema.create('transaction',data)
     })
 
   }
