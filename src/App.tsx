@@ -3,7 +3,7 @@ import { DashBoard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { NewTransactionModal } from './components/NewTransactionModal';
 import { GlobalStyle } from './styles/global';
-
+import { TransactionsContext } from './TransactionContext';
 
 
 export function App() {
@@ -18,17 +18,16 @@ export function App() {
     }
 
   return (
-    <>
+    <TransactionsContext.Provider value={[]}>
     
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
       <DashBoard />
       <NewTransactionModal 
           isOpen={isNewTransactionModalOpen}
           onRequestClose={handleCloseNewTransactionModal}
-      
       />
-    <GlobalStyle />
-    </>
+      <GlobalStyle />
+    </TransactionsContext.Provider>
   );
 }
 

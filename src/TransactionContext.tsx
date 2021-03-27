@@ -1,8 +1,16 @@
 import {createContext, useEffect, useState} from 'react'
+import { api } from './services/api'
 
-export const TransactionsContext = createContext([])
 
+interface Transactions {
+    id:number;
+    title:string;
+    amount:number;
+    category:string;
+    createdAt:string;
+}
 
+export const TransactionsContext = createContext<Transactions[]>([])
 
 export const TransactionsProvider = () => {
       
@@ -12,5 +20,11 @@ export const TransactionsProvider = () => {
         api.get('/transactions')
         .then(data => setTransactions(data.data.transactions))
     },[transactions])
+
+    return(
+        <TransactionsContext.Provider value={transactions}>
+
+        </TransactionsContext.Provider>
+    )
 
 }
