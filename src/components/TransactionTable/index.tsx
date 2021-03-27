@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { TransactionsContext } from "../../TransactionContext"
 import { Container } from "./styles"
 
@@ -6,7 +6,7 @@ export const TransactionsTable = () => {
     
     const transactions = useContext(TransactionsContext)
 
-    useEffect(() => {console.log(transactions)},[])
+    console.log(transactions)
   
     return(
      <Container>
