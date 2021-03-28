@@ -9,6 +9,24 @@ import { Container } from "./styles"
 export const Sumary = () => {
     const {transactions} = useContext(TransactionsContext)
 
+    const sumary = transactions.reduce((acc,transaction) => {
+        if(transaction.type === 'deposit'){
+            acc.deposit += transaction.amount
+            acc.total += transaction.amount
+        }
+        else{
+            acc.withdraw += transaction.amount
+            acc.total -= transaction.amount
+        }
+        return acc
+    },
+    
+ {
+        deposit:0,
+        withdraw:0,
+        total:0,
+    })
+
     return (
         <Container>
             <div>
@@ -18,7 +36,7 @@ export const Sumary = () => {
                 </header>
 
                 <strong>
-                    R$1000
+                    {sumary.deposit}
                 </strong>
             </div>
 
@@ -29,7 +47,7 @@ export const Sumary = () => {
                 </header>
 
                 <strong>
-                   - R$500
+                   -{sumary.withdraw}
                 </strong>
             </div>
 
@@ -40,7 +58,7 @@ export const Sumary = () => {
                 </header>
 
                 <strong>
-                    R$500
+                    {sumary.total}
                 </strong>
             </div>
         </Container>
